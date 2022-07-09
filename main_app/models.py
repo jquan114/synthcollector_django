@@ -1,6 +1,7 @@
 from pydoc import describe
 from unicodedata import name
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Synth(models.Model):
@@ -11,3 +12,6 @@ class Synth(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'synth_id':self.id}) 

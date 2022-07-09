@@ -13,6 +13,10 @@
         <p> Price: Piano</p>
         {% endif %}
     </div>
+    <div class="card-action">
+        <a href="{% url 'synths_update' synth.id %}">Edit</a>
+        <a href="{% url 'synths_delete' synth.id %}">Delete</a>
+      </div>
 </div>
 
 {% endblock %}
