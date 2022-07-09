@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content%}
+
+<h1> Synthesizer List</h1>
+
+{% for synth in synths %}
+<div class="card">
+    <div class="card-content">
+        <span class="card-title"> {{synth.name}}</span>
+        <p> Brand: {{synth.brand}}</p>
+        <p> Description: {{synth.description}}</p>
+        {% if synth.price > 0 %}
+        <p> Price: {{ synth.price }}</p>
+        {% else %}
+        <p> Price: Piano</p>
+        {% endif %}
+    </div>
+</div>
+{% endfor %} {% endblock%}
