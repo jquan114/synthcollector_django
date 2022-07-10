@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Synth
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from .models import Synth
+from .forms import OrderForm
 
 # Create your views here.
 
@@ -18,7 +19,17 @@ def synths_index(request):
 
 def synths_detail(request, synth_id):
     synth = Synth.objects.get(id=synth_id)
-    return render(request,'synths/detail.html', {'synth': synth})
+    order_form = OrderForm()
+    return render(request,'synths/detail.html', 
+    {'synth': synth, 'order_form': order_form})
+
+def add_order(request, synth_id):
+    form = OrderForm(request.POST)
+    if form.is_valid():
+        new_order = form.save(commit=False)
+        new_order.synth_id = synth_id
+        new_order.save()
+    return redirect('detail', synth_id=synth_id)
 
 
 #Add the Synth class & list view function below the imports
