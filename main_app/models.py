@@ -2,6 +2,7 @@ from pydoc import describe
 from unicodedata import name
 from django.db import models
 from django.urls import reverse
+from datetime import date
 
 # Create your models here.
 TIME = (
@@ -16,6 +17,9 @@ class Synth(models.Model):
     brand = models.CharField(max_length=100)
     description = models.TextField(max_length=100)
     price = models.FloatField()
+
+    def order_for_today(self):
+        return self.order_set.filter(date=date.today().count() >= len(TIME))
 
 
 class Order(models.Model):

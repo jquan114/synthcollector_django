@@ -41,6 +41,7 @@ class SynthCreate(CreateView):
 class SynthUpdate(UpdateView):
     model = Synth
     fields = ['name','brand','description','price']
+    success_url = '/synths/'
 
 class SynthDelete(DeleteView):
     model = Synth
