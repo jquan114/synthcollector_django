@@ -27,11 +27,11 @@
         </form>
         <br />
         {% if synths.order_for_today %}
-        <div class = "card-panel teal-text center-align">
+        <div class="card-panel teal-text center-align">
             The {{synth.name}} order has been made for today
         </div>
         {% else %}
-        <div class = "card-panel red-text center-align">
+        <div class="card-panel red-text center-align">
             This {{synth.name}} is waiting for you to order it.
         </div>
         {% endif %}
@@ -53,16 +53,32 @@
         </table>
     </div>
 </div>
-<script>
-    var dateEl = document.getElementById('id_date');
-    M.Datepicker.init(dateEl,{
-        format:'yyyy-mm-dd',
-        defaultDate: new Date(),
-        setDefaultDate: true,
-        autoClose: true,
-    });
+<hr />
+<!-- <div class="row">
+    <div class="col s6">
+        <h3> {{ synth.name }}'s Synth </h3>
+        {% if synth.persons.count %} {% for person in synth.persons.all %}
+        <div class="card">
+            <div class="card-content">
+                A <span class="color :{{person.color}}">" {{person.color}}" </span>
+                {{person.name}}
+                </span>
+            </div>
+        </div>
+        {% endfor %} {% else %}
+        <h5> You haven't selected a modular yet! What's taking you so long?</h5>
+        {% endif %}
+    </div> -->
+    <script>
+        var dateEl = document.getElementById('id_date');
+        M.Datepicker.init(dateEl, {
+            format: 'yyyy-mm-dd',
+            defaultDate: new Date(),
+            setDefaultDate: true,
+            autoClose: true,
+        });
 
-    var selectEl = document.getElementById('id_time');
-    M.FormSelect.init(selectEl);
-</script>
-{% endblock %}
+        var selectEl = document.getElementById('id_time');
+        M.FormSelect.init(selectEl);
+    </script>
+    {% endblock %}

@@ -3,6 +3,8 @@ from unicodedata import name
 from django.db import models
 from django.urls import reverse
 from datetime import date
+# Import the user
+from django.contrib.auth.models import User
 
 # Create your models here.
 TIME = (
@@ -10,6 +12,14 @@ TIME = (
     ('A', 'Afternoon'),
     ('E', 'Evening')
 )
+class Person(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f'{self.name}'
+
+    def get_absolute_url(self):
+        return reverse('synth_detail',kwargs={'pk': self.id})
 
 
 class Synth(models.Model):
@@ -17,6 +27,9 @@ class Synth(models.Model):
     brand = models.CharField(max_length=100)
     description = models.TextField(max_length=100)
     price = models.FloatField()
+    #Add M:M relationship
+    persons = models.ManyToManyField(Person)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def order_for_today(self):
         return self.order_set.filter(date=date.today().count() >= len(TIME))
