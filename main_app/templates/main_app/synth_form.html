@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block content %}
 
 {% if synth %}
@@ -6,6 +6,7 @@
 {% else %}
 <h1> Add some keys </h1>
 {% endif %}
+<div class="contain">
 
 <form action="" method="post">
     {% csrf_token %}
@@ -14,4 +15,5 @@
     </table>
     <input type="submit" value="Submit" class="btn" />
 </form>
+</div>
 {% endblock %}

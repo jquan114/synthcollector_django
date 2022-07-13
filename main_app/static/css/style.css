@@ -3,6 +3,7 @@ body{
     display:flex;
     min-height: 100vh;
     flex-direction:column;
+    background-image: url("synth.jpg");
 }
 
 main{
@@ -13,3 +14,10 @@ footer{
     padding-top:10;
     text-align:right;
 }
+
+.contain { 
+    background-color:#f1f8e9;  
+    height:50vh;
+    border-radius: 8%;
+}
+
