@@ -11,6 +11,8 @@
 
 # SCREENSHOTS
 ![Screenshots](https://i.imgur.com/FkKNHg5.png)
+![Screenshots](https://i.imgur.com/eegcD7r.jpg)
+
 
 
 # GETTING STARTED
